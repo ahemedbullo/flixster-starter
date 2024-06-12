@@ -1,28 +1,14 @@
-import { useState } from 'react'
+import React,{ useState } from 'react'
 import './App.css'
 import MovieList from './MovieList'
+import Header from './Header'
 
 const App = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const handleSearchInputChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
 
   return(
     <div className="App">
-      <form id="form">
-        <input 
-          type="search" 
-          id="query" 
-          name="q" 
-          placeholder="" 
-          value={searchQuery} 
-          onChange={handleSearchInputChange} 
-        />
-        <button type="submit">Search</button>
-      </form>
-      <MovieList searchQuery={searchQuery} />
+      <Header/>
+      <MovieList/>
     </div>
   );
 }

@@ -15,9 +15,9 @@ This component is the blueprint for how a single movie should be displayed. It w
     function MovieCard(props){
         return(
             <div className="MovieCard">
-                <img src="{props.image}" alt=""/>
+                <img src={`https://image.tmdb.org/t/p/w500${props.image}`} alt=""/>
                 <p>{props.title}</p>
-                <p>{props.rating}</p>
+                <p>{props.rating.toFixed(1)}</p>
             </div>
         );
 

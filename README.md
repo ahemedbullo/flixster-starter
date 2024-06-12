@@ -21,9 +21,9 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 
 
 - [ ] **Display Movies**
-  - [ ] Users can view a list of current movies from The Movie Database API.
-  - [ ] For each movie displayed, users can see its title, poster image, and votes.
-  - [ ] Users can load more current movies by clicking a button at the bottom of the list (page should not be reloaded).
+  - [x] Users can view a list of current movies from The Movie Database API.
+  - [x] For each movie displayed, users can see its title, poster image, and votes.
+  - [x] Users can load more current movies by clicking a button at the bottom of the list (page should not be reloaded).
 - [ ] **Search Functionality**
   - [ ] Users can search for movies and view the results in a grid.
   - [ ] Users can clear results and view previous current movies displayed.

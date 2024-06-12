@@ -1,0 +1,11 @@
+.MovieCard{
+    background-color: antiquewhite;
+    justify-content: center;
+    justify-self: center;
+    padding: 10px;
+}
+
+.MovieCard:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
