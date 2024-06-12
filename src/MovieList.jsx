@@ -3,29 +3,42 @@ import ReactDOM from "react-dom";
 import MovieCard from "./MovieCard";
 import './MovieList.css'
 
-function MovieList() {
+function MovieList({ searchQuery }) {
+    console.log("This is MovieList",searchQuery)
+
 const [movies, setMovies] = useState([])
 const [pageNum, setPageNum] = useState(1)
 const [loading, setLoading] = useState(false)
 
 const fetchMovies = async () => {
+
     const apiKey = import.meta.env.VITE_API_KEY
     let url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&page=${pageNum}`
-/*  if (searchQuery) {
-    url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&page=${pageNum}&query=${encodeURIComponent(searchQuery)}`
-    } */
-    
+    if (searchQuery != '') {
+
+    url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&page=${pageNum}&query=${encodeURIComponent(searchQuery)}`
+    console.log('test')
+
+}
+
+
     const response = await fetch(url)
     const data = await response.json()
-    setMovies((prevMovies) => {
-    return [...prevMovies, ...data.results]
-    })
+    console.log(data)
+if(pageNum>1){
+        setMovies((prevMovies) => {
+            return [...prevMovies, ...data.results]
+        })
+    }
+    else{
+    setMovies(data.results)
+    }
     setLoading(false)
 }
 
 useEffect(() => {
     fetchMovies()
-}, [pageNum])
+}, [pageNum, searchQuery])
 
 const handleLoadMore = () => {
     setLoading(true)
@@ -33,7 +46,7 @@ const handleLoadMore = () => {
 }
 
 let loadMoreButton
-if (loading) {
+    if (loading) {
     loadMoreButton = <p>Loading...</p>
 } else {
     loadMoreButton = <button onClick={handleLoadMore}>Load More</button>
@@ -41,16 +54,19 @@ if (loading) {
 return (
     <div>
     <div className="movie-list">
-    {movies && movies.map(movie => (
+        {movies && movies.map(movie => (
         <div key={`${movie.id}-${Math.random()}`}>
-        <MovieCard image={movie.poster_path} title={movie.original_title} rating={movie.vote_average} />
-        </div>))}
+            <MovieCard image={movie.poster_path} title={movie.original_title} rating={movie.vote_average} />
+        </div>
+        ))}
     </div>
     <div className="load-more">
-    {loadMoreButton}
-        </div>
+        {loadMoreButton}
+    </div>
     </div>
 )
 }
 
-export default MovieList
+export default MovieList;
+
+

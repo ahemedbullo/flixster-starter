@@ -4,11 +4,15 @@ import MovieList from './MovieList'
 import Header from './Header'
 
 const App = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
 
   return(
     <div className="App">
-      <Header/>
-      <MovieList/>
+      <Header onSearch={handleSearch}/>
+      <MovieList searchQuery={searchQuery}/>
     </div>
   );
 }
