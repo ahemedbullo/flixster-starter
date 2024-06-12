@@ -14,11 +14,10 @@ const fetchMovies = async () => {
 
     const apiKey = import.meta.env.VITE_API_KEY
     let url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&page=${pageNum}`
+    
     if (searchQuery != '') {
-
     url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&page=${pageNum}&query=${encodeURIComponent(searchQuery)}`
     console.log('test')
-
 }
 
 
