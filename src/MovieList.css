@@ -1,0 +1,34 @@
+.movieList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 15px;
+    justify-content: center;
+    background-color: beige;
+  }
+  
+  .movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .movie-list > div {
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .movie-list img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    max-width: 200px; /* Add max-width to prevent stretching */
+  }
+  
+  .movie-list p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
