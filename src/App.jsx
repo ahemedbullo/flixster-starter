@@ -9,6 +9,7 @@ const App = () => {
   const [isNowPlaying, setIsNowPlaying] = useState(true);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [genres, setGenres] = useState([]);
+  const [sort, setSort] = useState('');
 
   useEffect(() => {
     const fetchGenres = async () => {
@@ -43,10 +44,10 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <Header onSearch={handleSearch} onNowPlayingClick={handleNowPlayingClick} />
+        <Header onSearch={handleSearch} onNowPlayingClick={handleNowPlayingClick} setSort={setSort}/>
       </header>
       <div className="App-content">
-        <MovieList searchQuery={searchQuery} isNowPlaying={isNowPlaying} onMovieClick={handleMovieClick} />
+        <MovieList searchQuery={searchQuery} isNowPlaying={isNowPlaying} onMovieClick={handleMovieClick} sort={sort}  />
       </div>
       <Modal show={!!selectedMovie} onClose={closeModal} movie={selectedMovie} genres={genres} />
     </div>

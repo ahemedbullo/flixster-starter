@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import MovieList from './MovieList'
 import './Header.css'
 
-const Header = ({ onSearch, onNowPlayingClick }) => {
+const Header = ({ onSearch, onNowPlayingClick, setSort }) => {
     const [searchQuery, setSearchQuery] = useState('');
   
     const handleKeyPress = (event) => {
@@ -10,6 +10,7 @@ const Header = ({ onSearch, onNowPlayingClick }) => {
         onSearch(searchQuery);
       }
     };
+  
   
     return (
       <div className="Header">
@@ -25,6 +26,13 @@ const Header = ({ onSearch, onNowPlayingClick }) => {
         />
         <button className="search-button" onClick={() => onSearch(searchQuery)}>Search</button>
         <button className="now-playing-button" onClick={onNowPlayingClick}>Now Playing</button>
+        <select name="sort-by" 
+        id="sort-by"
+        onChange={e => setSort(e.target.value)}>
+        <option value="">Sort By</option>
+          <option value="popularity">Popularity</option>
+          <option value="revenue">Revenue</option>
+          </select>
       </div>
       </div>
     );
