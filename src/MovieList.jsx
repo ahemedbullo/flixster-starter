@@ -33,7 +33,7 @@ if(pageNum>1){
     setMovies(data.results)
     }
     setLoading(false)
-}
+};
 
 useEffect(() => {
     fetchMovies()

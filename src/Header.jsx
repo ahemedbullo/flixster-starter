@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MovieList from './MovieList'
 
-const Header = ({ onSearch }) => {
+const Header = ({ onSearch, onNowPlayingClick }) => {
     const [searchQuery, setSearchQuery] = useState('');
   
     const handleKeyPress = (event) => {
@@ -19,8 +19,10 @@ const Header = ({ onSearch }) => {
           onChange={e => setSearchQuery(e.target.value)} 
          onKeyPress={handleKeyPress} 
           placeholder="Search Movies"
+          className="search-input"
         />
-        <button onClick={() => onSearch(searchQuery)}>Search</button>
+        <button className="search-button" onClick={() => onSearch(searchQuery)}>Search</button>
+        <button className="now-playing-button" onClick={onNowPlayingClick}>Now Playing</button>
       </div>
     );
   };

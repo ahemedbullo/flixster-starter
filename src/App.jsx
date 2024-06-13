@@ -9,6 +9,10 @@ const App = () => {
     setSearchQuery(query);
   };
 
+  const handleNowPlayingClick = () => {
+    setSearchQuery('');  // Reset the search query to fetch now playing movies
+  };
+
   return(
     <div className="App">
       <Header onSearch={handleSearch}/>

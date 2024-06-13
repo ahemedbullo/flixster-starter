@@ -1,0 +1,50 @@
+.Header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+  }
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .search-input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    width: 300px; /* Make the search bar longer */
+    margin-right: 10px; /* Space between search input and button */
+  }
+  
+  .search-button {
+    padding: 10px 20px;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 20px; /* Space between search button and now playing button */
+  }
+  
+  .search-button:hover {
+    background-color: #ff4b4b;
+  }
+  
+  .now-playing-button {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Different color for differentiation */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .now-playing-button:hover {
+    background-color: #45a049;
+  }
+  
