@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import MovieCard from "./MovieCard";
 import './MovieList.css'
 
-function MovieList({ searchQuery }) {
+function MovieList({ searchQuery, isNowPlaying }) {
     console.log("This is MovieList",searchQuery)
 
 const [movies, setMovies] = useState([])
@@ -33,11 +33,11 @@ if(pageNum>1){
     setMovies(data.results)
     }
     setLoading(false)
-};
+}
 
 useEffect(() => {
     fetchMovies()
-}, [pageNum, searchQuery])
+}, [pageNum, searchQuery, isNowPlaying])
 
 const handleLoadMore = () => {
     setLoading(true)
@@ -67,5 +67,4 @@ return (
 }
 
 export default MovieList;
-
 

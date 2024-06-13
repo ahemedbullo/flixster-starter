@@ -1,23 +1,30 @@
 .Header {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    width: 100%;
     padding: 20px;
-    background-color: #333;
+    background-color: #444;
     color: white;
+    box-sizing: border-box;
+
+  }
+  .header-title{
+    margin-right: 20px;
   }
   
   .search-container {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    flex-grow: 1;
   }
   
   .search-input {
+    flex-grow: 1;
     padding: 10px;
     border-radius: 5px;
     border: none;
-    width: 300px; /* Make the search bar longer */
+    /* width: 300px; Make the search bar longer */
     margin-right: 10px; /* Space between search input and button */
   }
   

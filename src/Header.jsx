@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MovieList from './MovieList'
+import './Header.css'
 
 const Header = ({ onSearch, onNowPlayingClick }) => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -12,7 +13,8 @@ const Header = ({ onSearch, onNowPlayingClick }) => {
   
     return (
       <div className="Header">
-        <h1>Flixter</h1>
+        <h1 className="header-title">Flixter</h1>
+        <div className="search-container">
         <input 
           type="search" 
           value={searchQuery} 
@@ -23,6 +25,7 @@ const Header = ({ onSearch, onNowPlayingClick }) => {
         />
         <button className="search-button" onClick={() => onSearch(searchQuery)}>Search</button>
         <button className="now-playing-button" onClick={onNowPlayingClick}>Now Playing</button>
+      </div>
       </div>
     );
   };
