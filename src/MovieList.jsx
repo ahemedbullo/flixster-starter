@@ -1,70 +1,71 @@
 import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
 import MovieCard from "./MovieCard";
-import './MovieList.css'
+import './MovieList.css';
 
-function MovieList({ searchQuery, isNowPlaying }) {
-    console.log("This is MovieList",searchQuery)
+function MovieList({ searchQuery, isNowPlaying, onMovieClick }) {
+  const [movies, setMovies] = useState([]);
+  const [pageNum, setPageNum] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [prevSearchQuery, setPrevSearchQuery] = useState('');
+  const [prevIsNowPlaying, setPrevIsNowPlaying] = useState(isNowPlaying);
 
-const [movies, setMovies] = useState([])
-const [pageNum, setPageNum] = useState(1)
-const [loading, setLoading] = useState(false)
+  const fetchMovies = async (reset = false) => {
+    const apiKey = import.meta.env.VITE_API_KEY;
+    let url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&page=${pageNum}`;
 
-const fetchMovies = async () => {
+    if (!isNowPlaying && searchQuery !== '') {
+      url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&page=${pageNum}&query=${encodeURIComponent(searchQuery)}`;
+    }
 
-    const apiKey = import.meta.env.VITE_API_KEY
-    let url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&page=${pageNum}`
-    
-    if (searchQuery != '') {
-    url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&page=${pageNum}&query=${encodeURIComponent(searchQuery)}`
-    console.log('test')
-}
-
-
-    const response = await fetch(url)
-    const data = await response.json()
+    const response = await fetch(url);
+    const data = await response.json();
     console.log(data)
-if(pageNum>1){
-        setMovies((prevMovies) => {
-            return [...prevMovies, ...data.results]
-        })
+
+    if (reset) {
+      setMovies(data.results);
+    } else {
+      setMovies(prevMovies => [...prevMovies, ...data.results]);
     }
-    else{
-    setMovies(data.results)
+
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    if (searchQuery !== prevSearchQuery || isNowPlaying !== prevIsNowPlaying) {
+      setPageNum(1);
+      setPrevSearchQuery(searchQuery);
+      setPrevIsNowPlaying(isNowPlaying);
+      fetchMovies(true); // Reset movies on new search or mode change
+    } else {
+      fetchMovies();
     }
-    setLoading(false)
-}
+  }, [pageNum, searchQuery, isNowPlaying]);
 
-useEffect(() => {
-    fetchMovies()
-}, [pageNum, searchQuery, isNowPlaying])
+  const handleLoadMore = () => {
+    setLoading(true);
+    setPageNum(pageNum + 1);
+  };
 
-const handleLoadMore = () => {
-    setLoading(true)
-    setPageNum(pageNum + 1)
-}
-
-let loadMoreButton
-    if (loading) {
-    loadMoreButton = <p>Loading...</p>
-} else {
-    loadMoreButton = <button onClick={handleLoadMore}>Load More</button>
-}
-return (
+  return (
     <div>
-    <div className="movie-list">
+      <div className="movie-list">
         {movies && movies.map(movie => (
-        <div key={`${movie.id}-${Math.random()}`}>
-            <MovieCard image={movie.poster_path} title={movie.original_title} rating={movie.vote_average} />
-        </div>
+          <div key={`${movie.id}-${Math.random()}`}>
+            <MovieCard
+              image={movie.poster_path}
+              title={movie.title}
+              rating={movie.vote_average}
+              movie={movie}
+              onClick={onMovieClick}
+            />
+          </div>
         ))}
+      </div>
+      <div className="load-more">
+        {loading ? <p>Loading...</p> : <button onClick={handleLoadMore}>Load More</button>}
+      </div>
     </div>
-    <div className="load-more">
-        {loadMoreButton}
-    </div>
-    </div>
-)
+  );
 }
 
 export default MovieList;
-

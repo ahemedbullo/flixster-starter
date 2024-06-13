@@ -1,30 +1,23 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
-import './MovieCard.css'
+import './MovieCard.css';
 
+function MovieCard({ image, title, rating, movie, onClick }) {
+  return (
+    <div className="MovieCard" onClick={() => onClick(movie)}>
+      <img src={`https://image.tmdb.org/t/p/w500${image}`} alt="" />
+      <p>{title}</p>
+      <p>{rating.toFixed(1)}</p>
+    </div>
+  );
+}
 
-/* 
-This component is the blueprint for how a single movie should be displayed. It will likely contain elements to show:
-    The movie's title
-    The movie's poster image
-    The movie's vote average or rating
- */
+MovieCard.propTypes = {
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  movie: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 
-
-    function MovieCard(props){
-        return(
-            <div className="MovieCard">
-                <img src={`https://image.tmdb.org/t/p/w500${props.image}`} alt=""/>
-                <p>{props.title}</p>
-                <p>{props.rating.toFixed(1)}</p>
-            </div>
-        );
-
-    }
-    MovieCard.propTypes = {
-        image:PropTypes.any,
-        title: PropTypes.string,
-        rating: PropTypes.number,
-    }
-    export default MovieCard;
+export default MovieCard;

@@ -1,11 +1,26 @@
-import React,{ useState } from 'react'
-import './App.css'
-import MovieList from './MovieList'
-import Header from './Header'
+import React, { useState, useEffect } from 'react';
+import './App.css';
+import MovieList from './MovieList';
+import Header from './Header';
+import Modal from './Modal';
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [isNowPlaying, setIsNowPlaying]=useState(true);
+  const [isNowPlaying, setIsNowPlaying] = useState(true);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [genres, setGenres] = useState([]);
+
+  useEffect(() => {
+    const fetchGenres = async () => {
+      const apiKey = import.meta.env.VITE_API_KEY;
+      const url = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      setGenres(data.genres);
+    };
+
+    fetchGenres();
+  }, []);
 
   const handleSearch = (query) => {
     setSearchQuery(query);
@@ -13,15 +28,27 @@ const App = () => {
   };
 
   const handleNowPlayingClick = () => {
-     setSearchQuery('');  // Reset the search query to fetch now playing movies
+    setSearchQuery('');
     setIsNowPlaying(true);
-    console.log('is now playing')
   };
 
-  return(
+  const handleMovieClick = (movie) => {
+    setSelectedMovie(movie);
+  };
+
+  const closeModal = () => {
+    setSelectedMovie(null);
+  };
+
+  return (
     <div className="App">
-      <Header onSearch={handleSearch} onNowPlayingClick={handleNowPlayingClick}/>
-      <MovieList searchQuery={searchQuery} isNowPlaying={isNowPlaying}/>
+      <header className="App-header">
+        <Header onSearch={handleSearch} onNowPlayingClick={handleNowPlayingClick} />
+      </header>
+      <div className="App-content">
+        <MovieList searchQuery={searchQuery} isNowPlaying={isNowPlaying} onMovieClick={handleMovieClick} />
+      </div>
+      <Modal show={!!selectedMovie} onClose={closeModal} movie={selectedMovie} genres={genres} />
     </div>
   );
 }
