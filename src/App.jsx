@@ -48,6 +48,8 @@ const App = () => {
       </header>
       <div className="App-content">
         <MovieList searchQuery={searchQuery} isNowPlaying={isNowPlaying} onMovieClick={handleMovieClick} sort={sort}  />
+        <footer>
+      <b>© Created by Ahemed Summer 2024</b></footer>
       </div>
       <Modal show={!!selectedMovie} onClose={closeModal} movie={selectedMovie} genres={genres} />
     </div>

@@ -35,7 +35,9 @@
   margin-top: 10px;
   color: #f5f5f5;
 }
-
+.load-more{
+  padding: 10px;
+}
 @media (max-width: 600px) {
   .movie-list > div {
     width: 100%;

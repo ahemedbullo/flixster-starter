@@ -19,19 +19,18 @@ function MovieList({ searchQuery, isNowPlaying, onMovieClick, sort }) { //passin
     }
 
     if (sort) {
-      url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${pageNum}&sort_by=${sort}.desc`;
+    url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${pageNum}&sort_by=${sort}.desc`;
     }
 
     const response = await fetch(url);
     const data = await response.json();
-
     if (reset) { //this checks if I am now searching for a new movie if so just gives me the result or data of the new search
       setMovies(data.results); //this sets the movie displayed to the new search result
     } else {
       setMovies(prevMovies => [...prevMovies, ...data.results]); //if not a new search and I'm either loading more it appends more movies to be displayed
     }
     setLoading(false); //and changes it from loading back to Load More as the new movies have already loaded
-  };
+};
 
   useEffect(() => { //as the effect of a new search
     if (searchQuery !== prevSearchQuery || isNowPlaying !== prevIsNowPlaying || sort !== prevSort) { //checking if the new searchQuery is the same as the previous one
@@ -71,8 +70,8 @@ function MovieList({ searchQuery, isNowPlaying, onMovieClick, sort }) { //passin
           </div>
         ))}
       </div>
-      <div className="load-more">
-        {loading ? <p>Loading...</p> : <button onClick={handleLoadMore}>Load More</button>} {/* handles load more */}
+      <div >
+        {loading ? <p>Loading...</p> : <button className="load-more" onClick={handleLoadMore}>Load More</button>} {/* handles load more */}
       </div>
     </div>
   );

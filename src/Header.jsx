@@ -14,6 +14,7 @@ const Header = ({ onSearch, onNowPlayingClick, setSort }) => {
   
     return (
       <div className="Header">
+        <img className="header-logo" src="./movie.png" alt="" />
         <h1 className="header-title">Flixter</h1>
         <div className="search-container">
         <input 
@@ -32,6 +33,7 @@ const Header = ({ onSearch, onNowPlayingClick, setSort }) => {
         <option value="">Sort By</option>
           <option value="popularity">Popularity</option>
           <option value="revenue">Revenue</option>
+          <option value="vote_count">Vote Count</option>
           </select>
       </div>
       </div>
