@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import MovieList from './MovieList';
-import Header from './Header';
-import Modal from './Modal';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import MovieList from "./MovieList";
+import Header from "./Header";
+import Modal from "./Modal";
 
 const App = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [isNowPlaying, setIsNowPlaying] = useState(true);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [genres, setGenres] = useState([]);
-  const [sort, setSort] = useState('');
+  const [sort, setSort] = useState("");
 
   useEffect(() => {
     const fetchGenres = async () => {
@@ -29,7 +29,7 @@ const App = () => {
   };
 
   const handleNowPlayingClick = () => {
-    setSearchQuery('');
+    setSearchQuery("");
     setIsNowPlaying(true);
   };
 
@@ -44,16 +44,32 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <Header onSearch={handleSearch} onNowPlayingClick={handleNowPlayingClick} setSort={setSort}/>
+        <Header
+          onSearch={handleSearch}
+          onNowPlayingClick={handleNowPlayingClick}
+          setSort={setSort}
+        />
       </header>
       <div className="App-content">
-        <MovieList searchQuery={searchQuery} isNowPlaying={isNowPlaying} onMovieClick={handleMovieClick} sort={sort}  />
+        <MovieList
+          searchQuery={searchQuery}
+          isNowPlaying={isNowPlaying}
+          onMovieClick={handleMovieClick}
+          sort={sort}
+        />
         <footer>
-      <b>© Created by Ahemed Summer 2024</b></footer>
+          {" "}
+          <b>© Created by Ahemed Summer 2024</b>{" "}
+        </footer>
       </div>
-      <Modal show={!!selectedMovie} onClose={closeModal} movie={selectedMovie} genres={genres} />
+      <Modal
+        show={!!selectedMovie}
+        onClose={closeModal}
+        movie={selectedMovie}
+        genres={genres}
+      />
     </div>
   );
-}
+};
 
 export default App;

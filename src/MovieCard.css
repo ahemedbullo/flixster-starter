@@ -1,13 +1,13 @@
 .MovieCard {
-    background-color: #2c2c2c; /* Dark card background */
-    color: #f5f5f5; /* Light text for contrast */
+    background-color: #2c2c2c; 
+    color: #f5f5f5; 
     justify-content: center;
     justify-self: center;
     padding: 20px;
     border-radius: 10px;
     transition: transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    height: 500px; /* Add a fixed height */
+    height: 500px; 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -33,16 +33,20 @@
   .MovieCard .description {
     font-size: 1rem;
     margin-top: 10px;
-    color: #ccc; /* Slightly lighter text for description */
+    color: #ccc; 
   }
   .like-button.liked {
     color: red;
     /* other styles */
   }
+  .liked-watched{
+    display: flex;
+    gap: 100px;
+  }
   @media (max-width: 600px) {
     .MovieCard {
       padding: 15px;
-      max-width: 100%; /* Allow full width on small screens */
+      max-width: 100%; 
     }
     .MovieCard .title {
       font-size: 1.2rem;

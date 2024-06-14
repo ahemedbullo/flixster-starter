@@ -19,7 +19,6 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 
 #### CORE FEATURES
 
-
 - [x] **Display Movies**
   - [x] Users can view a list of current movies from The Movie Database API.
   - [x] For each movie displayed, users can see its title, poster image, and votes.
@@ -40,13 +39,13 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 
 #### STRETCH FEATURES
 
-- [ ] **Deployment**
-  - [ ] Website is deployed via Render.
-- [ ] **Embedded Movie Trailers**
-  - [ ] Within the popup displaying a movie's details, users can play the movie trailer.
-- [ ] **Watched Checkbox**
-  - [ ] For each movie displayed, users can mark the movie as watched.
-- [ ] **Favorite Button**
+- [x] **Deployment**
+  - [x] Website is deployed via Render.
+- [x] **Embedded Movie Trailers**
+  - [x] Within the popup displaying a movie's details, users can play the movie trailer.
+- [x] **Watched Checkbox**
+  - [x] For each movie displayed, users can mark the movie as watched.
+- [x] **Favorite Button**
   - [x] For each movie displayed, users can favorite the movie.
 - [ ] **Sidebar**
   - [ ] Users can open a sidebar
@@ -60,15 +59,15 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 
 ### Reflection
 
-* Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
+- Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
 Add your response here
 
-* If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
-  
+- If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
+
 Add your response here
 
-* Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
+- Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
 Add your response here
 
