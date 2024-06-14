@@ -31,4 +31,20 @@
     margin-top: 10px;
     color: #ccc; /* Slightly lighter text for description */
   }
+  .like-button.liked {
+    color: red;
+    /* other styles */
+  }
+  @media (max-width: 600px) {
+    .MovieCard {
+      padding: 15px;
+      max-width: 100%; /* Allow full width on small screens */
+    }
+    .MovieCard .title {
+      font-size: 1.2rem;
+    }
   
+    .MovieCard .description {
+      font-size: 0.9rem;
+    }
+  }

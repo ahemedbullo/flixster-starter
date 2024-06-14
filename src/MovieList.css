@@ -4,13 +4,15 @@
   gap: 15px;
   margin: 15px;
   justify-content: center;
-  background-color: #1c1c1c; /* Dark background to match the mood */
+  background-color: #1c1c1c;
+  width: 100%; /* Ensure movie list takes full width */
 }
 
 .movie-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%; /* Ensure movie list takes full width */
 }
 
 .movie-list > div {
@@ -31,5 +33,16 @@
   font-size: 18px;
   font-weight: bold;
   margin-top: 10px;
-  color: #f5f5f5; /* Light text for movie titles */
+  color: #f5f5f5;
+}
+
+@media (max-width: 600px) {
+  .movie-list > div {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .movie-list img {
+    height: auto;
+  }
 }

@@ -33,6 +33,9 @@
   cursor: pointer;
   color: #ffffff;
 }
+.close-button:hover{
+  color: red;
+}
 
 .modal h2 {
   margin-top: 0;
