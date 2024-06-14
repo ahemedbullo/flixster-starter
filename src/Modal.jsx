@@ -4,6 +4,24 @@ import './Modal.css';
 const Modal = ({ show, onClose, movie, genres }) => { //passing in those props from different components
 
   const [trailerUrl, setTrailerUrl] = useState('');
+  const getModalVideo = async (movieId) => {
+    const apiKey = import.meta.env.VITE_API_KEY;
+    let url = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`;
+
+    const response = await fetch(url);
+    const data = await response.json();
+    const trailer = data.results.find(
+      (video) => video.site === "YouTube" && video.type === "Trailer"
+    );
+    const trailerUrl = `https://www.youtube.com/embed/${trailer.key}`;
+    setTrailerUrl(trailerUrl);
+  };
+
+  useEffect(() => {
+    if (movie) {
+      getModalVideo(movie.id);
+    }
+  }, [movie]);
 
 if (!show || !movie) { //if I am not picking to show or if there are no movies there would be no modal
     return null;
@@ -31,11 +49,15 @@ const getGenreNames = (genreIds) => {
     }
     return genreNames.join(', ');
 };
+const handleModalClick =(event)=>{
+  event.stopPropagation();
+}
+
 
 
 return (
-    <div className="modal-overlay">
-        <div className="modal">
+    <div className="modal-overlay" onClick={onClose}>
+        <div className="modal" onClick={handleModalClick}>
         <button className="close-button" onClick={onClose}>X</button>
         <h2>{title}</h2>
         <img
@@ -46,6 +68,15 @@ return (
         <p><strong>Release Date:</strong> {release_date}</p>
         <p><strong>Genres:</strong> {getGenreNames(genre_ids)}</p> {/* sends the ids for the movies and gets back the list with the name of genres */}
         <p><strong>Overview:</strong> {overview}</p>
+        <iframe
+        className='trailer-video'
+        src={trailerUrl}
+        allow='accelerometer;; autoplay; encrypted-media; gyroscope; picture-in-picture'
+        allowFullScreen
+        width='600'
+        height='500'
+        >
+        </iframe>
 
         </div>
     </div>
