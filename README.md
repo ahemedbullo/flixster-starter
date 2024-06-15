@@ -11,9 +11,9 @@ Currently, two official plugins are available:
 
 Submitted by: **Ahemed**
 
-Estimated time spent: **#** hours spent in total
+Estimated time spent: 40 hours spent in total
 
-Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
+Deployed Application (optional): [Flixster Deployed Site](https://flixster-starter-m0gc.onrender.com/)
 
 ### Application Features
 
@@ -56,23 +56,18 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 https://github.com/ahemedbullo/flixster-starter/assets/144303065/39aa127e-74ce-421d-83bd-1f7606b4e914
 
 ### Reflection
-
 - Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+I was uprepared to fetch using api and searching and sorting gave a hard time as well, where I ran into a lot off errors
 
 - If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
 
-Add your response here
+I would have styled it better and added the side bar. 
 
 - Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+I think I spent way more time than needed trying to fix my search and sort which prevented me from moving forward and I like the animations my peers which I want to try next time. .
 
-### Open-source libraries used
-
-- Add any links to open-source libraries used in your project.
 
 ### Shout out
-
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+Shout out to Diego and Dana for helping me when I was stuck with sorting and searching
